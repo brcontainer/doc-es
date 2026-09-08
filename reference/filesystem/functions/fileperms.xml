@@ -95,10 +95,21 @@ switch ($perms & 0xF000) {
     case 0x4000: $info = 'd'; break; // directory
     case 0x6000: $info = 'b'; break; // block special
     case 0x8000: $info = '-'; break; // regular
-    case 0xA000: $info = 'l'; break; // symbolic link (reachable when using lstat function)
+    case 0xA000: $info = 'l'; break; // symbolic link
     case 0xC000: $info = 's'; break; // socket
 
     // unknown
+    default: $info = 'u';
+
+    case 0x1000: $info = 'p'; break; // Pipe FIFO
+    case 0x2000: $info = 'c'; break; // Especial de carácter
+    case 0x4000: $info = 'd'; break; // Directorio
+    case 0x6000: $info = 'b'; break; // Especial de bloque
+    case 0x8000: $info = 'r'; break; // Regular
+    case 0xA000: $info = 'l'; break; // Enlace simbólico (accesible al utilizar la función lstat)
+    case 0xC000: $info = 's'; break; // Socket
+
+    // Desconocido
     default: $info = 'u';
 }
 
